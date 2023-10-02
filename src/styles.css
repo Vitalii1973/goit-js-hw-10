@@ -1,0 +1,81 @@
+/* Стилі для випадаючого списку та інших елементів */
+.breed-select,
+.loader,
+.error {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #d0f4f4;
+  margin-bottom: 20px;
+}
+
+/* Стилі для блоку інформації про кота */
+.cat-info {
+  font-size: 18px;
+  display: flex;
+  /* Зробили блок flex-контейнером */
+  align-items: center;
+  /* Вирівняли вміст по вертикалі по центру */
+  justify-content: flex-start;
+  /* Вирівняли вміст по горизонталі зліва */
+  position: relative;
+  /* Встановили позицію relative для контейнера */
+}
+
+/* Стилі для зображення кота */
+.cat-image {
+  max-width: 600px;
+  /* Змінили максимальну ширину зображення */
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Встановили позицію absolute та положення зверху та зліва */
+}
+
+/* Стилі для текстових елементів у .cat-info */
+.cat-info p {
+  margin-left: 720px;
+
+}
+
+/* Стилі для текстових елементів у .cat-info */
+.cat-name,
+.cat-description,
+.cat-temperament {
+  flex: 1;
+  max-width: 30%;
+  /* Розтягнули текст на залишок доступного простору */
+  text-align: left;
+  /* Розмістили текст справа */
+}
+
+.cat-name {
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+.cat-temperament {
+  font-weight: bolder;
+}
+
+.loader {
+  font-size: 18px;
+  color: #1d1fce;
+  text-align: center;
+  margin-top: 20px;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: none;
+}
+
+.error {
+  font-size: 18px;
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
