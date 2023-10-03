@@ -5,7 +5,7 @@ const loader = document.querySelector('.loader');
 const error = document.querySelector('.error');
 const catInfo = document.querySelector('#catInfo');
 
-error.style.display = 'block';
+// Сховати повідомлення про помилку при завантаженні сторінки
 error.style.display = 'none';
 
 fetchBreeds();
@@ -13,15 +13,15 @@ fetchBreeds();
 breedSelect.addEventListener('change', async () => {
   const selectedBreedId = breedSelect.value;
 
-  error.style.display = 'none';
+  // Сховати повідомлення про помилку і показати лоадер
+  // error.style.display = 'none';
   loader.style.display = 'block';
   catInfo.style.display = 'none';
 
   try {
-    // Перед новим запитом скидаємо відображення помилки
-    error.style.display = 'none';
     await fetchCatByBreed(selectedBreedId);
   } catch (err) {
+    // Показати повідомлення про помилку
     error.style.display = 'block';
     loader.style.display = 'none';
     catInfo.style.display = 'none';
