@@ -55,9 +55,9 @@
   font-size: 30px;
 }
 
-.cat-temperament {
+/* .cat-temperament {
   font-weight: bolder;
-}
+} */
 
 .loader {
   font-size: 18px;
@@ -79,5 +79,3 @@
   margin-left: auto;
   margin-right: auto;
 }
-
-/* Стилі для селекта при початковому завантаженні */
