@@ -60,7 +60,7 @@ async function displayCatInfo(breedId) {
       catTemperamentElement.style.display = 'block';
       catInfo.style.display = 'block'; // Відображаємо інформацію про кота
     } else {
-      catImageElement.src = 'placeholder.jpg'; // Замініть на свій URL заповнювач
+      catImageElement.src = 'placeholder.jpg';
     }
   } catch (err) {
     console.error(err);

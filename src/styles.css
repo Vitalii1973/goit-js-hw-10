@@ -1,3 +1,12 @@
+body {
+
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background: linear-gradient(to right, #ff5733 20%, #ffcc33 40%, #33ff57 60%);
+  overflow: hidden;
+}
+
 /* Стилі для випадаючого списку та інших елементів */
 .breed-select,
 .loader,
@@ -14,23 +23,20 @@
 .cat-info {
   font-size: 18px;
   display: flex;
-  /* Зробили блок flex-контейнером */
   align-items: center;
-  /* Вирівняли вміст по вертикалі по центру */
   justify-content: flex-start;
-  /* Вирівняли вміст по горизонталі зліва */
   position: relative;
-  /* Встановили позицію relative для контейнера */
 }
 
 /* Стилі для зображення кота */
 .cat-image {
-  max-width: 600px;
-  /* Змінили максимальну ширину зображення */
+  width: 600px;
+  height: 500px;
+  object-fit: contain;
   position: absolute;
   top: 0;
-  left: 0;
-  /* Встановили позицію absolute та положення зверху та зліва */
+  left: 20px;
+
 }
 
 /* Стилі для текстових елементів у .cat-info */
@@ -45,9 +51,8 @@
 .cat-temperament {
   flex: 1;
   max-width: 30%;
-  /* Розтягнули текст на залишок доступного простору */
   text-align: left;
-  /* Розмістили текст справа */
+  font-size: 22px;
 }
 
 .cat-name {
@@ -55,9 +60,9 @@
   font-size: 30px;
 }
 
-/* .cat-temperament {
-  font-weight: bolder;
-} */
+.breed-select {
+  margin-left: 20px;
+}
 
 .loader {
   font-size: 18px;
