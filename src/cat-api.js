@@ -5,7 +5,7 @@ axios.defaults.headers.common['x-api-key'] =
 
 export async function fetchBreeds() {
   try {
-    const response = await axios.get('https://api.thecatapi.com/v1/breeds');
+    const response = await axios.get('https://api.thecatapi.com/v1/breeds123');
     const breeds = response.data;
 
     return breeds;

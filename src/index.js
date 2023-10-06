@@ -13,37 +13,8 @@ const catDescriptionElement = document.querySelector('.cat-description');
 const catTemperamentElement = document.querySelector('.cat-temperament');
 
 error.style.display = 'none';
-breedSelect.style.display = 'block'; // Відображаємо список порід при завантаженні сторінки
-
-function hideCatInfo() {
-  catNameElement.style.display = 'none';
-  catDescriptionElement.style.display = 'none';
-  catTemperamentElement.style.display = 'none';
-  catInfo.style.display = 'none';
-}
-
-window.addEventListener('load', async () => {
-  try {
-    const breeds = await fetchBreeds();
-    breeds.forEach(breed => {
-      const option = document.createElement('option');
-      option.value = breed.id;
-      option.textContent = breed.name;
-      breedSelect.appendChild(option);
-    });
-
-    // Отримання інформації про першого кота та відображення її при завантаженні сторінки
-    const firstBreedId = breeds[0].id;
-    await displayCatInfo(firstBreedId);
-  } catch (err) {
-    console.error(err);
-    error.style.display = 'block';
-    hideCatInfo(); // Приховуємо інформацію про кота при помилці
-    breedSelect.style.display = 'none'; // Приховуємо список порід у випадку помилки
-  } finally {
-    loader.style.display = 'none';
-  }
-});
+catInfo.style.display = 'none'; // Приховуємо вікно з інформацією про кота
+breedSelect.style.display = 'none'; // Приховуємо вибір породи
 
 async function displayCatInfo(breedId) {
   try {
@@ -65,19 +36,40 @@ async function displayCatInfo(breedId) {
   } catch (err) {
     console.error(err);
     error.style.display = 'block';
-    hideCatInfo(); // Приховуємо інформацію про кота при помилці
-    breedSelect.style.display = 'none'; // Приховуємо список порід у випадку помилки
+    catInfo.style.display = 'none'; // Приховуємо вікно з інформацією про кота при помилці
   } finally {
-    loader.style.display = 'none';
+    loader.style.display = 'none'; // Приховуємо лоадер після завершення завантаження
   }
 }
 
+// Показуємо лоадер при зміні породи
 breedSelect.addEventListener('change', async () => {
   const selectedBreedId = breedSelect.value;
 
   error.style.display = 'none';
-  loader.style.display = 'block';
-  hideCatInfo(); // Приховуємо інформацію про кота при зміні породи
+  loader.style.display = 'block'; // Показуємо лоадер при зміні породи
 
   await displayCatInfo(selectedBreedId);
+});
+
+// Показуємо лоадер при першому завантаженні сторінки
+window.addEventListener('load', async () => {
+  loader.style.display = 'block';
+  try {
+    const breeds = await fetchBreeds();
+    breeds.forEach(breed => {
+      const option = document.createElement('option');
+      option.value = breed.id;
+      option.textContent = breed.name;
+      breedSelect.appendChild(option);
+    });
+
+    // Покажемо вибір породи після завершення завантаження порід
+    breedSelect.style.display = 'block';
+    loader.style.display = 'none'; // Приховуємо лоадер після завершення завантаження порід
+  } catch (err) {
+    console.error(err);
+    error.style.display = 'block';
+    loader.style.display = 'none'; // Приховуємо лоадер після завершення завантаження порід у випадку помилки
+  }
 });
