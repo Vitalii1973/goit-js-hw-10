@@ -32,6 +32,10 @@ async function displayCatInfo(breedId) {
       catInfo.style.display = 'block'; // Відображаємо інформацію про кота
     } else {
       catImageElement.src = 'placeholder.jpg';
+      // Відображаємо повідомлення про помилку, якщо дані для породи не знайдено
+      error.textContent = 'Oops! Something went wrong! Try reloading the page!';
+      error.style.display = 'block';
+      catInfo.style.display = 'none'; // Приховуємо вікно з інформацією про кота при помилці
     }
   } catch (err) {
     console.error(err);
@@ -48,6 +52,11 @@ breedSelect.addEventListener('change', async () => {
 
   error.style.display = 'none';
   loader.style.display = 'block'; // Показуємо лоадер при зміні породи
+  // Прибираємо інформацію про попередню породу
+  catNameElement.style.display = 'none';
+  catDescriptionElement.style.display = 'none';
+  catTemperamentElement.style.display = 'none';
+  catInfo.style.display = 'none';
 
   await displayCatInfo(selectedBreedId);
 });
